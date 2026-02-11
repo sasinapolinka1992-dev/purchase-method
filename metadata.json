@@ -1,0 +1,5 @@
+{
+  "name": "Purchase method",
+  "description": "An administrative module for managing property purchase methods including installments, mortgages, and full payments with complex pricing logic and targeting filters.",
+  "requestFramePermissions": []
+}
