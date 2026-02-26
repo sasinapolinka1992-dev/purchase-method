@@ -21,6 +21,11 @@ export enum PriceImpactDirection {
   DECREASE = 'Снизить стоимость'
 }
 
+export enum PriceImpactCalculationSource {
+  BASE = 'Базовая стоимость',
+  PROMO = 'Стоимость по акции'
+}
+
 export enum TargetMode {
   FILTERS = 'Фильтры',
   CHESSBOARD = 'Шахматка'
@@ -47,6 +52,7 @@ export interface PurchaseMethod {
     unit: PriceImpactUnit;
     base: PriceImpactBase;
     direction: PriceImpactDirection;
+    calculationSource: PriceImpactCalculationSource;
   };
   targetMode: TargetMode;
   targetFilters?: {
