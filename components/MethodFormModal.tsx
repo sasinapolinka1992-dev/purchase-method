@@ -6,6 +6,7 @@ import {
   PriceImpactUnit, 
   PriceImpactBase, 
   PriceImpactDirection, 
+  PriceImpactCalculationSource,
   TargetMode,
   InstallmentTermType
 } from '../types';
@@ -35,6 +36,13 @@ const MethodFormModal: React.FC<MethodFormModalProps> = ({ method, isOpen, onClo
     startDate: '',
     endDate: '',
     hasPriceImpact: false,
+    priceImpact: {
+      amount: 0,
+      unit: PriceImpactUnit.PERCENT,
+      base: PriceImpactBase.TOTAL,
+      direction: PriceImpactDirection.DECREASE,
+      calculationSource: PriceImpactCalculationSource.BASE
+    },
     targetMode: TargetMode.CHESSBOARD,
     selectedUnits: [],
     installmentDetails: {
@@ -61,6 +69,13 @@ const MethodFormModal: React.FC<MethodFormModalProps> = ({ method, isOpen, onClo
         endDate: '',
         createdAt: new Date().toLocaleDateString('ru-RU'),
         hasPriceImpact: false,
+        priceImpact: {
+          amount: 0,
+          unit: PriceImpactUnit.PERCENT,
+          base: PriceImpactBase.TOTAL,
+          direction: PriceImpactDirection.DECREASE,
+          calculationSource: PriceImpactCalculationSource.BASE
+        },
         targetMode: TargetMode.CHESSBOARD,
         selectedUnits: [],
         installmentDetails: {
@@ -333,6 +348,19 @@ const MethodFormModal: React.FC<MethodFormModalProps> = ({ method, isOpen, onClo
                   >
                     <option value={PriceImpactBase.TOTAL}>От общей стоимости</option>
                     <option value={PriceImpactBase.SQM}>От цены за м²</option>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <label className="block text-[10px] font-black uppercase text-gray-400">Расчет от</label>
+                  <Select
+                    value={formData.priceImpact?.calculationSource}
+                    onChange={e => setFormData({
+                      ...formData,
+                      priceImpact: { ...formData.priceImpact!, calculationSource: e.target.value as PriceImpactCalculationSource }
+                    })}
+                  >
+                    <option value={PriceImpactCalculationSource.BASE}>Базовой стоимости</option>
+                    <option value={PriceImpactCalculationSource.PROMO}>Стоимости по акции</option>
                   </Select>
                 </div>
                 <div className="md:col-span-2 flex gap-4">
