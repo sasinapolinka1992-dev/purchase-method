@@ -1,5 +1,5 @@
 
-import { PurchaseMethod, PurchaseMethodType, PriceImpactUnit, PriceImpactBase, PriceImpactDirection, TargetMode } from './types';
+import { PurchaseMethod, PurchaseMethodType, PriceImpactUnit, PriceImpactBase, PriceImpactDirection, PriceImpactCalculationSource, TargetMode } from './types';
 
 export const MOCK_METHODS: PurchaseMethod[] = [
   {
@@ -14,7 +14,8 @@ export const MOCK_METHODS: PurchaseMethod[] = [
       amount: 5,
       unit: PriceImpactUnit.PERCENT,
       base: PriceImpactBase.TOTAL,
-      direction: PriceImpactDirection.INCREASE
+      direction: PriceImpactDirection.INCREASE,
+      calculationSource: PriceImpactCalculationSource.BASE
     },
     targetMode: TargetMode.FILTERS,
     selectedUnits: ['Секция 1-10-1', 'Секция 1-10-2', 'Секция 2-5-3']
@@ -31,7 +32,8 @@ export const MOCK_METHODS: PurchaseMethod[] = [
       amount: 10,
       unit: PriceImpactUnit.PERCENT,
       base: PriceImpactBase.TOTAL,
-      direction: PriceImpactDirection.DECREASE
+      direction: PriceImpactDirection.DECREASE,
+      calculationSource: PriceImpactCalculationSource.BASE
     },
     targetMode: TargetMode.FILTERS,
     selectedUnits: ['Секция 1-1-1', 'Секция 1-1-2', 'Секция 1-1-3', 'Секция 1-1-4', 'Секция 2-10-5']
